@@ -1,0 +1,46 @@
+{% load static %}
+
+<div class="mt-3" style="background-color : #212529; width : 100%">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mt-3">
+                <h3 class="text-white ">Contact Information</h3>
+                <p style="color:yellow; font-size : 18px">
+                    <i class="fa fa-map-marker" style="color:red"></i>
+                    Janakpuri Metro Station, Delhi
+                </p>
+                <p style="color:yellow; font-size : 18px">
+                    <i class="fa fa-envelope" style="color:red"></i>
+                    gargvv156@gmail.com
+                </p>
+                <p style="color:yellow; font-size : 18px">
+                    <i class="fa fa-mobile" style="color:red"></i>
+                    +91 9711**4631, 8287**8335
+                </p>
+                <p style="color:yellow; font-size : 18px">
+                    <i class="fa fa-globe" style="color:red"></i>
+                    www.jobsdhundho.com
+                </p>
+            </div>
+
+            <div class="col-md-4 mt-3">
+                <h3 class="text-white">Online Placements</h3>
+                <p style="color:yellow; font-size : 18px">
+                    Participants connect with supervisors or mentors via video calls, online platforms, or virtual workshops—no commuting required.Regular virtual check-ins, guidance, and performance reviews from industry professionals simulate the traditional workplace environment .
+                </p>
+            </div>
+            
+            <div class="col-md-4 mt-3">
+                <h3 class="text-white">Newsletter</h3>
+                <p style="color:yellow; font-size : 18px">
+                    If you want any extra information then send me your email address.
+                </p>
+                <form method="post" class="form-inline"> 
+                    {% csrf_token %}
+                    <input type="email" name="emailid" placeholder="Enter your email address" required class="form-control">
+                    <input type="submit" value="Submit" class="btn btn-primary ml-2">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

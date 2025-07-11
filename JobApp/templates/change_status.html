@@ -1,0 +1,51 @@
+{% load static %}
+
+{% block body %}
+
+{% include "admin_navigation.html" %}
+<style>
+.btn {
+  background-color: maroon;
+  color: white;
+  margin-top : 0.5%;
+  height : 40px;
+  font-weight : bold;
+}
+
+.btn:hover {
+  background-color: red; 
+}
+
+</style>
+<marquee style="font-family : Monotype Corsiva; font-size : 30px; color: darkcyan; background-color: black; font-weight: bold; margin-top : 0.25%">
+    Verify Recruiters
+</marquee>
+
+<form class="container mt-5" method="post">
+    {% csrf_token %}
+<div class="form-group">
+    <label for="username"><b>Recruiter Name</b></label>
+    <input id="username" type="text" class="form-control font-weight-bold" name="rname" readonly value="{{recruiter.user.first_name}} {{recruiter.user.last_name}}">
+  </div>
+  <div class="form-group">
+    <label for="password"><b>Status</b></label>
+    <select class="form-control" name="status" >
+        <option value="Accept">Accept</option>
+        <option value="Reject">Reject</option>
+        </select>
+  </div>
+  <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+{% if error == "no" %}
+<script>
+    alert("Status changed successfully");
+    window.location = ('{% url "all_recruiters" %}')
+</script>
+
+{% elif error == "yes" %}
+<script>
+    alert("Something went wrong , Try Again....");
+</script>
+{% endif %}
+
+{% endblock  %}

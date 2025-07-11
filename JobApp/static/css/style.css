@@ -1,0 +1,33 @@
+
+        .social-icons i {
+            font-size:35px;
+            margin: 0 10px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        .social-icons i:hover {
+            color: #007bff;
+        }
+        .header-text {
+            font-weight: bold;
+            font-size: 35px;
+            line-height: 1.2;
+        }
+        .logo-img {
+            width: 182px;
+            height: 130px;
+        }
+         .nav-link{
+            color : white;
+            margin-right : 8px;
+        }
+        .nav-link:hover{
+            color : yellow;
+            font-weight : bold;
+            background-color : red;
+            border-radius : 10px;
+        }
+        .navbar-brand:hover{
+            color : yellow !important; 
+        }
+        

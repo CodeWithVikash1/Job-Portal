@@ -1,0 +1,53 @@
+{% load static %}
+
+{% block body %}
+
+{% include "admin_navigation.html" %}
+<style>
+.btn {
+  background-color: maroon;
+  color: white;
+  margin-bottom : 2%;
+  height : 40px;
+}
+
+.btn:hover {
+  background-color: red; 
+}
+
+</style>
+<marquee style="font-family : Monotype Corsiva; font-size : 30px; color: darkcyan; background-color: black; font-weight: bold; margin-top : 0.25%">
+     Here are all the Student Users.
+</marquee>
+
+
+<div class="container mt-3">
+<table id="example" class="table table-hover ">
+    <thead>
+        <tr>
+            <th>S.No.</th>
+            <th>Full Name</th>
+            <th>Email Address</th>
+            <th>Contact No.</th>
+            <th>Gender</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for d in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{d.user.first_name}} {{d.user.last_name}}</td>
+            <td>{{d.user.username}}</td>
+            <td>{{d.mobile}}</td>
+            <td>{{d.gender}}</td>
+            <td><img src="{{d.image.url}}" style="width:50px; height:50px; border-radius:50%"></td>
+            <td><a href="{% url 'delete_user' d.user.id %}" class="btn btn-primary" onclick="return confirm('Are you sure you want to delete the data ?')" role="button">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock  %}

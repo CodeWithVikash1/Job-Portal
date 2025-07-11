@@ -1,0 +1,41 @@
+{% load static %}
+
+{% block body %}
+
+{% include "navigation.html" %}
+
+<style>
+    .mydiv:hover{
+        box-shadow : 0 0 20px 0 rgba(0,0,0,0.3);
+        transform : translateY(-20px)
+
+    }
+</style>
+<marquee style="font-family: Monotype Corsiva; font-size: 30px; color: darkcyan; background-color: black; font-weight: bold; margin-top: 0.25%">
+  Contact Us
+</marquee>
+
+<div class="container mt-5">
+    <br><br>
+    <div class="row mt-5">
+        <div class="col-md-3 mydiv">
+            <h4 class="text-center"><b><i class="fas fa-phone-alt mr-2"></i>Contact :-</b></h4>
+            <p class="text-center">+91 9711524631</p>
+        </div>
+         <div class="col-md-3 mydiv">
+            <h4 class="text-center"><b><i class="fas fa-envelope mr-2"></i>Email Address :-</b></h4>
+            <p class="text-center">gargvv156@gmail.com</p>
+        </div>
+         <div class="col-md-3 mydiv">
+            <h4 class="text-center"><b><i class="fas fa-map-marker-alt mr-2"></i>Address :-</b></h4>
+            <p class="text-center">Delhi, India</p>
+        </div>
+         <div class="col-md-3 mydiv">
+            <h4 class="text-center"><b><i class="fas fa-clock mr-2"></i>Office Timing :-</b></h4>
+            <p class="text-center">10:00 A.M. to 7:00 P.M.</p>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

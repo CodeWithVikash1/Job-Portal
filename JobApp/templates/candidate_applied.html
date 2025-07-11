@@ -1,0 +1,59 @@
+{% load static %}
+
+{% block body %}
+
+{% include "recruiter_navigation.html" %}
+<style>
+.btn {
+  background-color: maroon;
+  color: white;
+  margin-bottom : 2%;
+  height : 40px;
+}
+
+.btn:hover {
+  background-color: red; 
+}
+
+</style>
+<marquee style="font-family : Monotype Corsiva; font-size : 30px; color: darkcyan; background-color: black; font-weight: bold; margin-top : 0.25%">
+     Candidates Applied
+</marquee>
+
+
+<div class="container mt-3">
+<table id="example" class="table table-hover ">
+    <thead>
+        <tr>
+            <th>S.No.</th>
+            <th>FullName</th>
+            <th>Email ID</th>
+            <th>Contact No.</th>
+            <th>Job Title</th>
+            <th>Company</th>
+            <th>Apply Date</th>
+            <th>Resume</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for d in data %}
+       {% if request.user.id == d.job.recruiter.user.id %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{d.student.user.first_name}} {{d.student.user.last_name}}</td>
+            <td>{{d.student.user.username}}</td>
+            <td>{{d.student.mobile}}</td>
+            <td>{{d.job.title}}</td>
+            <td>{{d.job.recruiter.company}}</td>
+            <td>{{d.apply_date}}</td>
+            <td><a href="{{d.resume.url}}">Download</a></td>
+            <td> <a href="{% url 'delete_candidate_application' d.id %}" onclick="return confirm('Are you sure ?')" class="btn btn-primary" role="button">Delete</a></td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock  %}

@@ -1,0 +1,51 @@
+{% load static %}
+
+{% block body %}
+
+{% include "user_navigation.html" %}
+<style>
+.btn {
+  background-color: maroon;
+  color: white;
+  margin-bottom: 2%;
+  height: 40px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: red;
+}
+</style>
+
+<marquee style="font-family: Monotype Corsiva; font-size: 30px; color: darkcyan; background-color: black; font-weight: bold; margin-top: 0.25%">
+  Apply for Job
+</marquee>
+
+<div class="container mt-3">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+      <label><b>Upload Resume</b></label>
+      <input type="file" class="form-control" name="resume" >
+    </div>
+    <input class="btn btn-primary mt-3" type="submit" value="Submit">
+  </form>
+</div>
+
+{% if error == "close" %}
+<script>
+    alert("This job application is closed. The last date to apply has passed.");
+    window.location = ('{% url "job_list_user" %}')
+</script>
+{% elif error == "notopen" %}
+<script>
+    alert("This job application is not yet open. Please check back later.");
+    window.location = ('{% url "job_list_user" %}')
+</script> 
+{% elif error == "done" %}
+<script>
+    alert("Your job application has been submitted successfully.");
+    window.location = ('{% url "job_list_user" %}')
+</script> 
+{% endif %}
+{% endblock %}

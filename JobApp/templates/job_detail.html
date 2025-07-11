@@ -1,0 +1,63 @@
+{% load static %}
+
+{% block body %}
+
+{% include "user_navigation.html" %}
+<style>
+.btn {
+  background-color: maroon;
+  color: white;
+  margin-bottom: 2%;
+  height: 40px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: red;
+}
+</style>
+
+<marquee style="font-family: Monotype Corsiva; font-size: 30px; color: darkcyan; background-color: black; font-weight: bold; margin-top: 0.25%">
+  Job Details
+</marquee>
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{{ data.company_logo.url }}" width="200px" height="200px">
+    </div>
+
+    <div class="col-md-5">
+      <h2>{{ data.title }}</h2>
+      <p>{{ data.recruiter.company }} <em><a href="{% url 'job_list_user' %}">(View All Jobs)</a></em></p>
+      <a href="#" class="mr-2"><i class="fa fa-map-marker mr-2"></i>{{ data.location }}</a>
+      <a href="#"><i class="fa fa-calendar mr-2"></i>{{ data.creation_date }}</a>
+      <br>
+      <p>
+        <strong>
+          <i class="fas fa-money-bill mr-2"></i> ₹{{ data.salary }}
+        </strong>
+      </p>
+      <div class="mt-2">
+        <a  href="{% url 'apply_for_job' data.id %}" class="btn btn-primary">Apply</a>
+      </div>
+    </div>
+
+    <div class="col-md-3 mt-3">
+   <h4>Required Experience :-</h4>
+    <p>{{data.experience}} Yrs</p>
+    <h4>Skills Required :-</h4>
+    <p>{{data.skills}}</p>
+    <h4>Start Date for apply :-</h4>
+    <p>{{data.start_date}}</p>
+    <h4>End Date for apply :-</h4>
+    <p>{{data.end_date}}</p>
+    </div>
+  </div>
+  <div class="mt-3"></div>
+<h2>Overview :-</h2>
+<p>{{data.description}}</p>
+</div>
+</div>
+
+{% endblock %}

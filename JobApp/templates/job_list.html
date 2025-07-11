@@ -1,0 +1,49 @@
+{% load static %}
+
+{% block body %}
+
+{% include "recruiter_navigation.html" %}
+<style>
+.btn {
+  background-color: maroon;
+  color: white;
+  margin-bottom : 2%;
+  height : 40px;
+}
+
+.btn:hover {
+  background-color: red; 
+}
+
+</style>
+<marquee style="font-family : Monotype Corsiva; font-size : 30px; color: darkcyan; background-color: black; font-weight: bold; margin-top : 0.25%">
+     Manage JOb Details
+</marquee>
+
+
+<div class="container mt-3">
+<table id="example" class="table table-hover ">
+    <thead>
+        <tr>
+            <th>S.No.</th>
+            <th>Job Title</th>
+            <th>Creation Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for d in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{d.title}}</td>
+            <td>{{d.creation_date}}</td>
+            <td><a href="{% url 'edit_job_detail' d.id %}" class="btn btn-primary mr-2" role="button">Edit</a>
+               <a href="{% url 'delete_job' d.id %}" onclick="return confirm('Are you sure ?')" class="btn btn-primary" role="button">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock  %}
